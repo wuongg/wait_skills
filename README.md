@@ -1,6 +1,6 @@
 # Landing Page Skills
 
-Bộ skill làm landing page theo pipeline hai bước: **architect** quyết định cấu trúc, **builder** quyết định look & motion rồi mới viết code. File `INTEGRATION.md` là hợp đồng handoff giữa hai bên.
+Bộ skill làm landing page theo pipeline hai bước: **architect** quyết định cấu trúc, **builder** quyết định look & motion rồi mới viết code. Skill `landing-page-skills-integration` là hợp đồng handoff giữa hai bên.
 
 ```
 Brief
@@ -13,12 +13,15 @@ Brief
 ## Cấu trúc repo
 
 ```
-.cursor/skills/deploy-staging/
+.cursor/skills/
 ├── landing-page-composition-architect/
-│   ├── landing-page-composition-architect.md
-│   └── cinematic-landing-page.md
-└── cinematic-landing-page-integration/
-    └── INTEGRATION.md
+│   └── SKILL.md
+├── landing-page-skills-integration/
+│   └── SKILL.md
+└── cinematic-landing-page/
+    ├── SKILL.md
+    ├── EXAMPLES.md
+    └── PATCH.md
 ```
 
 | Skill | Việc làm | Không làm |
@@ -45,7 +48,7 @@ Mở folder đó trong agent IDE. Khi hỏi landing page / bố cục / trang gi
 
 (Windows: `%USERPROFILE%\.cursor\skills\`)
 
-Copy hai thư mục trong `deploy-staging/` vào đó (giữ nguyên `INTEGRATION.md` cùng cấp pipeline).
+Copy cả ba thư mục skill ở trên vào đó (giữ nguyên cấu trúc `SKILL.md`).
 
 ## Pipeline làm việc
 

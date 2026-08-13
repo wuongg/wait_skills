@@ -25,14 +25,14 @@ to author a page without a locked Blueprint** and to stop **re-asking
 questions the planner already answered**.
 
 **Target file (repo layout):**
-`../landing-page-composition-architect/cinematic-landing-page.md`
+`../cinematic-landing-page/SKILL.md`
 
 Apply the four blocks below in order. Each block shows:
 - **WHERE** (which section of that file)
 - **ACTION** (insert / replace / append)
 - **BLOCK** (verbatim text to paste)
 
-Integration contract path: `../cinematic-landing-page-integration/INTEGRATION.md`
+Integration contract path: `../landing-page-skills-integration/SKILL.md`
 
 At the end there is a Changelog + Rollback section.
 
@@ -52,7 +52,7 @@ paragraph.
 
 Before doing ANYTHING else, check for a **locked Composition Blueprint**
 (see `landing-page-skills-integration` /
-`../cinematic-landing-page-integration/INTEGRATION.md` §1).
+`../landing-page-skills-integration/SKILL.md` §1).
 
 **Rule.** You MUST NOT choose archetype, motion, mood, or write a single
 line of code without a locked Blueprint in the conversation.
@@ -221,7 +221,7 @@ downstream validator does not silently accept it.
 
 ## APPLYING THE PATCH — quick recipe
 
-1. Open `../landing-page-composition-architect/cinematic-landing-page.md` v4.0
+1. Open `../cinematic-landing-page/SKILL.md` v4.0
    (skill name `cinematic-landing-page` — not a separate `SKILL.md`).
 2. Bump the version header from `version: 4.0` to `version: 4.1`.
 3. Paste BLOCK 1 at the top of `PHASE 0 — TRIGGER & TONE`.
@@ -257,5 +257,5 @@ Nothing else in the original file depends on these blocks.
 **End of patch.**
 
 > **Status:** blocks above are already applied in
-> `../landing-page-composition-architect/cinematic-landing-page.md` (v4.1).
+> `../cinematic-landing-page/SKILL.md` (v4.1).
 > Keep this file as the reversible changelog / re-apply recipe.

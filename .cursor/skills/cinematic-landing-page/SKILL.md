@@ -11,7 +11,7 @@ description: >
   "landing page", "trang giới thiệu", "poster", "portfolio". Supports vanilla
   single-file HTML OR React+Vite+Tailwind(+framer-motion/motion/GSAP). The skill
   Requires a locked Composition Blueprint from landing-page-composition-architect
-  (see cinematic-landing-page-integration/INTEGRATION.md) before choosing archetype
+  (see landing-page-skills-integration/SKILL.md) before choosing archetype
   or writing code — except micro edits to an already-built page. INTERVIEWS only
   for surface decisions the planner did not cover, locks a measured Build Spec
   with acceptance criteria, then builds.
@@ -59,8 +59,7 @@ INFER ARCHETYPE from language before asking:
 ### PHASE 0.0 — BLUEPRINT GATE (v4.1)
 
 Before doing ANYTHING else, check for a **locked Composition Blueprint**
-(see `landing-page-skills-integration` /
-`../cinematic-landing-page-integration/INTEGRATION.md` §1).
+(see skill `landing-page-skills-integration` §1).
 
 **Rule.** You MUST NOT choose archetype, motion, mood, or write a single
 line of code without a locked Blueprint in the conversation.

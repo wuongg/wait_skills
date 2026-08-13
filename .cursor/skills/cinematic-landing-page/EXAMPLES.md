@@ -702,7 +702,7 @@ Cross-example patterns worth memorizing:
    `rhythm_rules`.
 6. Emit build spec JSON referencing the blueprint
    (`cinematic-landing-page` PHASE 1.6).
-7. Run `cinematic-landing-page-integration/INTEGRATION.md` §6 validation
+7. Run `landing-page-skills-integration` §6 validation
    gate; log any near-miss in `Validation & notes`.
 8. Add a row to the Pattern Library if a new cross-example pattern emerged.
 
