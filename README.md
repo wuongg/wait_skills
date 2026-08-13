@@ -1,169 +1,141 @@
-# Cinematic Landing Page
+# Landing Page Skills
 
-Skill [Cursor](https://cursor.com) làm **trang landing cinematic** — một file `index.html`, không build, không framework.
+Bộ skill làm landing page theo pipeline hai bước: **architect** quyết định cấu trúc, **builder** quyết định look & motion rồi mới viết code. File `INTEGRATION.md` là hợp đồng handoff giữa hai bên.
 
-Agent đóng vai art director: hỏi brief ngắn, chốt spec, rồi mới viết code.
+```
+Brief
+  → Composition Architect   (WHAT / ORDER / DENSITY)
+  → Integration Contract    (Blueprint → Build Spec)
+  → Cinematic Builder       (HOW IT LOOKS / MOVES / CODE)
+  → Shipped page
+```
 
-## Cài vào Cursor
+## Cấu trúc repo
 
-**Cách 1 — clone repo này rồi mở bằng Cursor**
+```
+.cursor/skills/deploy-staging/
+├── landing-page-composition-architect/
+│   ├── landing-page-composition-architect.md
+│   └── cinematic-landing-page.md
+└── cinematic-landing-page-integration/
+    └── INTEGRATION.md
+```
+
+| Skill | Việc làm | Không làm |
+|---|---|---|
+| **Composition Architect** | Intent, narrative spine, 5–8 section, layout family, rhythm, kill list → Composition Blueprint | Không viết code, không chọn mood/motion/archetype |
+| **Cinematic Landing Page** | Archetype A–F, mood, motion, stack, viết HTML hoặc React | Không đổi số section / thứ tự / JTBD của blueprint |
+| **Integration** | Schema Blueprint, map layout family → archetype, invariant, failure modes | — |
+
+## Cài đặt
+
+**Cách 1 — clone repo**
 
 ```bash
 git clone https://github.com/wuongg/wait_skills.git
 ```
 
-Skill nằm tại:
+Mở folder đó trong agent IDE. Khi hỏi landing page / bố cục / trang giới thiệu, skill sẽ được dùng.
+
+**Cách 2 — copy skill sang máy**
 
 ```
-.cursor/skills/deploy-staging/SKILL.md
+~/.cursor/skills/
 ```
 
-Mở folder đó trong Cursor. Khi bạn hỏi landing page / trang giới thiệu, agent sẽ dùng skill.
+(Windows: `%USERPROFILE%\.cursor\skills\`)
 
-**Cách 2 — dùng mọi project**
+Copy hai thư mục trong `deploy-staging/` vào đó (giữ nguyên `INTEGRATION.md` cùng cấp pipeline).
 
-Copy thư mục skill sang máy bạn:
+## Pipeline làm việc
 
-```
-~/.cursor/skills/cinematic-landing-page/
-```
-
-(Windows: `%USERPROFILE%\.cursor\skills\cinematic-landing-page\`)
-
-Bên trong chỉ cần `SKILL.md`.
-
-## Khi nào gọi
-
-Nói với agent kiểu:
-
-- “Làm landing page cho sản phẩm X”
-- “Trang giới thiệu đẹp, cinematic”
-- “Coming soon page premium”
-- “Hero page kiểu Linear / Awwwards”
-
-Hoặc gọi thẳng: *dùng skill cinematic landing page*.
-
-## Cách làm việc
-
-Agent **không viết code ngay**. Bốn bước:
+Agent **không viết code ngay**. Flow chuẩn:
 
 ```
-Hỏi brief  →  Chốt spec  →  Build index.html  →  Chỉnh từng phần
+Diagnose intent  →  Blueprint  →  CHỐT  →  Build Spec  →  Code  →  Chỉnh từng phần
 ```
 
-### 1. Phỏng vấn
+### 1. Architect — chốt cấu trúc
 
-Hỏi từng đợt, tối đa 4 câu. Lười thì trả lời **mặc định** / **tự chọn đi** / **đẹp như Linear** — agent khóa default và đi tiếp.
+Suy ra page intent trước khi hỏi:
 
-**Đợt 1 — Sản phẩm & mood**
-
-- Sản phẩm là gì, dành cho ai?
-- Chọn mood:
-
-  | | Mood | Cảm giác |
-  |---|---|---|
-  | A | **Dark Cinematic** | nền đen, chữ bạc, video hero loop — Linear / Vercel / Raycast |
-  | B | **Warm Editorial** | giấy kem, serif, ảnh editorial — fashion / architecture |
-  | C | **Neo-Tech** | navy/ink, mono sắc, chữ kinetic — dev-tool / crypto |
-  | D | **Light Minimal** | trắng, 1 accent, ảnh sản phẩm — Notion / Things |
-
-- Có trang tham chiếu không? (tên hoặc link)
-- Headline muốn nói gì? (ý cũng được — agent viết lại)
-
-**Đợt 2 — Copy**
-
-Agent đề xuất headline (2 dòng), subcopy, cặp CTA, mục nav. Duyệt bằng một chữ: *ok*, *chốt*, *đổi …*.
-
-**Đợt 3 — Hero**
-
-| | Nguồn | Ghi chú |
+| | Intent | Spine gợi ý |
 |---|---|---|
-| A | Video MP4 của bạn | URL; nên 1080p+, loop mượt, tối, dưới 15MB |
-| B | Ảnh tĩnh | URL bạn gửi |
-| C | Agent tìm giúp | asset có license, đúng mood |
-| D | CSS / SVG | gradient, grain, pan chậm — không cần media |
+| I1 | Launch / Announce | Hook → Value → Proof → CTA |
+| I2 | Conversion / Lead-gen | Problem → Solution → Benefits → Trust → CTA |
+| I3 | Brand / Editorial | Atmosphere → Philosophy → Signature → World |
+| I4 | Portfolio / Studio | Identity → Work → Method → Contact |
+| I5 | Product Story | Context → Mechanism → Benefits → Use cases → CTA |
+| I6 | Campaign / Teaser | Tease → World → Details → Action |
 
-Kèm 1 câu art direction (*cảnh nên thấy gì*) và vị trí: full-bleed / lệch phải 60% / dưới 40%.
+Rồi đề xuất Composition Blueprint (section, layout family, visual weight, kill list). Reply **ok** / **mặc định đi** / **chốt** để khóa.
 
-**Đợt 4 — Logo, đối tác, màu**
+Architect **không** bàn archetype cinematic, cursor effect, hay palette — đó là việc của builder.
 
-Logo hình học SVG, dải partner 0–6 mark, palette token. Xác nhận hoặc sửa 1 giá trị.
+### 2. Builder — chốt look rồi build
 
-Nếu tin nhắn đầu đã đủ (brand, mood, copy, asset), agent **bỏ phỏng vấn**, đưa thẳng bảng spec.
+Sau blueprint (hoặc brief đủ nếu chỉ gọi builder), agent hỏi ngắn (tối đa 4 câu / đợt), rồi khóa Build Spec.
 
-### 2. Chốt spec
+**Sáu archetype**
 
-Bạn thấy một bảng (title, mood, font, màu, hero, headline, CTA, nav). Agent hỏi đúng một câu:
+| | Tên | Phù hợp |
+|---|---|---|
+| A | Fixed-Viewport Hero | Launch, coming soon, một composition |
+| B | Sticky Cinema Scroll | Story nhiều cảnh, fashion / destination |
+| C | Cursor-Effect Hero | Portfolio, poster tương tác |
+| D | Multi-Section Studio | Studio / agency nhiều khối |
+| E | Switcher Hero | Team, lookbook, crossfade |
+| F | Kinetic-Type Poster | Portfolio cá nhân, chữ lớn chạy |
 
-> Chốt spec này chưa? Reply **CHỐT** để tôi build, hoặc nói phần muốn đổi.
+**Mood:** Dark Cinematic · Warm Editorial · Neo-Tech · Light Minimal · Light Editorial · Soft Glass
 
-Sửa một chỗ: *đổi headline thành …* → bảng cập nhật → hỏi CHỐT lại.
+**Stack**
 
-**Chưa CHỐT thì chưa có file.** Đó là cố ý.
+- **V1** — một file `index.html` (CSS/JS inline) — mặc định cho A/B/C/E/F
+- **V2** — React + Vite + Tailwind (+ motion/GSAP) — mặc định cho D hoặc trang sẽ mở rộng
 
-### 3. Nhận file
+Chưa **CHỐT** spec thì chưa có file.
 
-Một `index.html`:
+### 3. Nhận file & chỉnh tiếp
 
-- CSS + JS inline — mở bằng trình duyệt là chạy
-- Chỉ tải ngoài: font Google + asset hero (nếu có)
-- Desktop: 5 khối — brand mark, nav, pill, copy + CTA, partner strip
-- Mobile: menu burger kính mờ, headline xuống dòng, partner 2×2
-- Tôn trọng `prefers-reduced-motion`
+- V1: mở `index.html` bằng trình duyệt
+- V2: `npm install && npm run dev`
 
-Agent tóm tắt 3 dòng: đã build gì, hero lấy từ đâu, nên chỉnh gì trước.
-
-Mở file:
-
-```bash
-start index.html
-```
-
-Hoặc kéo thả vào Chrome / Edge. Xem desktop ở viewport rộng; thu hẹp để kiểm tra menu mobile.
-
-### 4. Chỉnh tiếp
-
-Nói tự nhiên — agent sửa đúng chỗ:
-
-| Bạn nói | Agent làm |
-|---|---|
-| đổi video | thay hero, giữ fade |
-| headline ngắn hơn | viết lại 2 dòng |
-| thêm logo | bổ sung mark / partner |
-| sáng hơn | nudges palette |
-| đổi CTA | đổi nhãn / thứ tự nút |
-
-Mỗi lần nhận lại **cả file**, không phải patch rời.
+Nói tự nhiên để sửa đúng chỗ (*đổi headline*, *video khác*, *bớt section*, *CTA thành …*). Mỗi lần nhận lại bản đầy đủ, không patch rời.
 
 ## Câu hay dùng
 
 ```
-Làm landing page cinematic cho [sản phẩm], mood Dark Cinematic, mặc định đi.
+Làm landing portfolio studio, mặc định đi.
 ```
 
 ```
-Trang coming soon, vibe Linear, headline ý là "ship faster without the chaos".
-Video: [URL]. Chốt spec rồi build.
+Trang launch sản phẩm X, intent I1, mood Dark Cinematic.
+Headline ý là "ship faster without the chaos". Chốt rồi build.
 ```
 
 ```
-Đổi video sang [URL mới], headline ngắn hơn, CTA thành "Book a demo".
+Chỉ cần blueprint trước — đừng code. Intent conversion, 5–6 section.
+```
+
+```
+Đổi video sang [URL], headline ngắn hơn, CTA thành "Book a demo".
 ```
 
 ## Mẹo
 
-1. Gửi **reference** (link hoặc tên) — nhanh hơn mô tả vibe dài.
-2. Headline: ý ngắn; agent siết còn tối đa 4 từ / dòng.
-3. Video hero: tối, loop kín, không watermark, không chữ cháy trên clip.
-4. Một mood, một accent. Đừng trộn Dark Cinematic với pastel.
-5. Đây là **một composition full-screen**, không phải website nhiều khối. Đừng xin Features / testimonials trừ khi bạn cố ý lệch brief.
+1. Gửi reference (link hoặc tên trang) — nhanh hơn mô tả vibe dài.
+2. Reply **mặc định đi** khi lười: agent khóa default hợp lý và đi tiếp.
+3. Architect trước, builder sau — đừng xin Features / FAQ / metric band trừ khi intent thật sự cần.
+4. Hero media: tối, loop kín, không watermark; hoặc để agent tìm asset có license.
+5. Một mood, tối đa 2 signature interaction. Đừng trộn Dark Cinematic với pastel.
 
 ## Giới hạn
 
-- Một file HTML — không Next.js, React, CMS
+- Architect không viết UI; builder không tự thêm/bớt/đổi thứ tự section đã lock
 - Không form backend, analytics, i18n phức tạp
 - Hero cần URL hoặc để agent tìm; skill không host video
-- Cover desktop / tablet / portrait — không tối ưu email hay in ấn
+- Cover desktop / tablet / mobile — không tối ưu email hay in ấn
 
 ## License
 
