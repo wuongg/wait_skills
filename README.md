@@ -14,15 +14,19 @@ Brief
 
 ```
 .cursor/skills/
+├── CHEATSHEET.md                          ← 1 trang, đọc 5 phút
+├── TESTS.md                               ← 30 acceptance tests (pipeline)
 ├── landing-page-composition-architect/
-│   └── SKILL.md
+│   └── SKILL.md                           ← planner
 ├── landing-page-skills-integration/
-│   └── SKILL.md
+│   └── SKILL.md                           ← contract / validation
 └── cinematic-landing-page/
-    ├── SKILL.md
-    ├── EXAMPLES.md
-    └── PATCH.md
+    ├── SKILL.md                           ← builder v4.1
+    ├── EXAMPLES.md                        ← 6 case studies
+    └── PATCH.md                           ← changelog v4.0 → v4.1
 ```
+
+`CHEATSHEET.md` và `TESTS.md` nằm ở gốc `.cursor/skills/` vì chúng thuộc **cả pipeline**, không gắn một skill.
 
 | Skill | Việc làm | Không làm |
 |---|---|---|
@@ -48,7 +52,16 @@ Mở folder đó trong agent IDE. Khi hỏi landing page / bố cục / trang gi
 
 (Windows: `%USERPROFILE%\.cursor\skills\`)
 
-Copy cả ba thư mục skill ở trên vào đó (giữ nguyên cấu trúc `SKILL.md`).
+Copy cả ba thư mục skill ở trên vào đó (giữ nguyên cấu trúc `SKILL.md`). `CHEATSHEET.md` và `TESTS.md` copy kèm nếu muốn dùng trên máy.
+
+## Tài liệu
+
+| File | Dành cho | Đọc khi |
+|---|---|---|
+| [`.cursor/skills/CHEATSHEET.md`](.cursor/skills/CHEATSHEET.md) | Người dùng / team | 5 phút nắm pipeline, 6 intent, 16 slot, anti-pattern |
+| [`.cursor/skills/cinematic-landing-page/EXAMPLES.md`](.cursor/skills/cinematic-landing-page/EXAMPLES.md) | Planner + builder | Calibrate blueprint / Build Spec (6 case) |
+| [`.cursor/skills/TESTS.md`](.cursor/skills/TESTS.md) | Maintainer | Sau mỗi lần sửa rule planner hoặc validation (30 test) |
+| [`.cursor/skills/cinematic-landing-page/PATCH.md`](.cursor/skills/cinematic-landing-page/PATCH.md) | Maintainer | Changelog builder v4.0 → v4.1 |
 
 ## Pipeline làm việc
 
